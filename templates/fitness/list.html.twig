@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h2>Fitness Tracking: Dashboard</h2>
+    </div>
+
+    <div  class="parent"> {% for activityTypeTotalTime in activityTypeTotalTimes %}
+        <div class="child">
+            <div class="numberCircle" >{{ activityTypeTotalTime.totalTime }}</div><div style="font-size: 16px; color: green">{{activityTypeTotalTime.activityType}} (In Minutes)</div>  </div>
+        {% endfor %}
+    </div>
+    <div >
+        <div style="width:400px; background-color: #666666; padding: 40px; margin: 10px;">
+            <form id="faq_search" action="{{ path('activity') }}" method="post">
+
+                <select name="activity_type">
+                    <option value="" selected>Select an Activity Type</option>
+                    <option value="walking">walking</option>
+                    <option value="running">running</option>
+                    <option value="cycling">cycling</option>
+                </select>
+                <br><br>
+                <button type="submit" class="button">Search</button>
+            </form>
+        </div>
+        <div>
+            <table width="100%">
+                <thead>
+
+                    <tr>
+                        <th>Activity Type</th>
+                        <th>Distance</th>
+                        <th>Distance Unit</th>
+                        <th>Elapsed Time</th>
+                        <th>Activity Time</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    {% for activity in activities %}
+                    <tr>
+                        <td>{{ activity.activityType }}</td>
+                        <td>{{ activity.distance }}</td>
+                        <td>{{ activity.distanceUnit }}</td>
+                        <td>{{ activity.elapsedTime }}</td>
+                        <td>{{ activity.activityDate | date('Y-m-d h:m:s') }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+
+        </div>
+    </div>
+{% endblock %}

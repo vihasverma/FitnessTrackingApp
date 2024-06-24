@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>
+        Fitness Tracking -
+        {% block title %}
+            Dashboard
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+
+</head>
+<body class="bg-light">
+
+<div class="container">
+    <main>
+        {% if app.user %}
+        <a href="{{ path('activity') }}" class="button">Home</a> | <a href="{{ path('activity_create') }}" class="button">Add a new Activity</a> | <a href="/logout" class="button">Log Out</a>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </main>
+
+</div>
+</body>
+</html>

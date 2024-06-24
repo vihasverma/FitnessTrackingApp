@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h2>Fitness Tracking: Enter Activity</h2>
+    </div>
+
+    <div >
+        <div>
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        <strong>{{ type|capitalize }}!</strong> {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {{ form_start(form) }}
+            <div>
+                <div>
+                    {{ form_row(form.activityType) }}
+                </div>
+                <div>
+                    {{ form_row(form.distance) }}
+                </div>
+                <div>
+                    {{ form_row(form.distanceUnit) }}
+                </div>
+                <div>
+                    {{ form_row(form.elapsedTime) }} <span style="font-size:10px;">(In Minutes)</span>
+                </div>
+            </div>
+
+            <hr>
+
+            {{ form_row(form.save) }}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('pages/post') }}
+{% endblock %}

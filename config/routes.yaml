@@ -1,0 +1,14 @@
+api_login_check:
+    path: /api/login_check
+
+web_controllers:
+  resource:
+    path: ../src/UI/Http/Web/Controller/
+    namespace: App\UI\Http\Web\Controller
+  type: attribute
+
+api_controllers:
+  resource:
+    path: ../src/UI/Http/Api/Controller/
+    namespace: App\UI\Http\Api\Controller
+  type: attribute
